@@ -22,6 +22,26 @@ Prowl.prototype.apikey = function(token, callback) {
     });
 };
 Prowl.prototype.verify = function() {};
+Prowl.prototype.middleware = function(callback) {
+    var self = this;
+    return function(req, res, next) {
+	if (req.query && req.query.token) { //callback stage
+	    self.apikey(req.query.token, function(err, res) {
+		callback(req, res.apikey, function(err) {
+		    if (err) {
+			res.send(400);
+		    } else {
+			res.send(200);
+		    }
+		});
+            });
+	} else { //get token stage
+	    self.token(function(err, result) {
+		res.redirect(result.url);
+            });
+	}
+    };
+};
 module.exports = Prowl;
 if (require.main == module) {
     var p = new Prowl("a99620718bec8d9cd4fb1806327cdf97c900fe08");
