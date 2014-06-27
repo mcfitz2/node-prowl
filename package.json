@@ -1,0 +1,14 @@
+{
+  "name": "prowljs",
+  "version": "0.0.1",
+  "description": "",
+  "main": "prowl.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Micah Fitzgerald",
+  "license": "GPLv2",
+  "dependencies": {
+    "xml2js": "~0.4.4"
+  }
+}
