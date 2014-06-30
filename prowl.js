@@ -16,7 +16,7 @@ Prowl.prototype._parseResponse = function(xml, callback) {
 	    return callback(json.prowl.error[0].$, null);
 	}
 	response.success = json.prowl.success[0].$;
-	if (json.prowl.retreive) {
+	if (json.prowl.retrieve) {
 	    response.retrieve = json.prowl.retrieve[0].$;
 	}
 	callback(null, response);
