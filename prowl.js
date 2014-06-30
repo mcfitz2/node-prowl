@@ -71,14 +71,14 @@ Prowl.prototype.middleware = function(callback) {
     return function(req, res, next) {
 	if (req.query && req.query.token) { //callback stage
 	    self.apikey(req.query.token, function(err, res) {
-		callback(req, res.apikey, function(err) {
+		callback(req, res.retrieve.apikey, function(err) {
 		    req.error = err;
 		    next();
 		});
             });
 	} else { //get token stage
-	    self.token(function(err, result) {
-		res.redirect(result.url);
+	    self.token(function(err, response) {
+		res.redirect(response.retrieve.url);
             });
 	}
     };
